@@ -1,0 +1,25 @@
+{
+  "evaluation_set": "held_out_test_set",
+  "note": "All metrics are from the held-out test set. Training metrics are not reported.",
+  "model_version": "1.0.0",
+  "evaluated_at": "2026-08-25T14:15:24.331686",
+  "precision": 0.9135,
+  "recall": 0.9896,
+  "f1_score": 0.95,
+  "roc_auc": 0.9996,
+  "confusion_matrix": {
+    "tn": 3095,
+    "fp": 9,
+    "fn": 1,
+    "tp": 95
+  },
+  "true_positives": 95,
+  "false_positives": 9,
+  "false_negatives": 1,
+  "true_negatives": 3095,
+  "fp_cost_per_transaction_inr": 150.0,
+  "fp_cost_total_inr": 1350.0,
+  "fp_cost_note": "Each false positive (legitimate transaction wrongly blocked) is estimated to cost INR 150 in lost revenue and support overhead. Total FP cost on the held-out test set: INR 1,350.00.",
+  "test_set_size": 3200,
+  "test_set_fraud_count": 96
+}
