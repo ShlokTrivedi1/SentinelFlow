@@ -13,23 +13,9 @@ SentinelFlow is a risk management system. It detects anomalous transaction veloc
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart TD
-    A["Transaction Input"]
-    B["Feature Engineering — features/engineering.py<br/>- Velocity: 1h and 24h counts<br/>- Amount z-score vs user history<br/>- Geo distance from last transaction<br/>- New device flag<br/>- Payment method and merchant category encoding"]
-    C["XGBoost Classifier — models/model.json<br/>- Trained on synthetic UPI and card data<br/>- scale_pos_weight to handle class imbalance<br/>- Outputs fraud probability 0 to 1"]
-    D["SHAP Explainability — features/explainability.py<br/>- Top-3 feature contributions<br/>- Translated into plain English sentences"]
-    E["Two-Threshold Decision Gate — api/main.py<br/>- Score below 0.35: approve<br/>- Score 0.35 to 0.70: flag for review<br/>- Score 0.70 or above: block"]
-    F["SQLite Audit Log — data/audit_log.db<br/>- Score, decision, explanation, model version recorded"]
-    G["FastAPI Response + Streamlit Dashboard"]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-```
+<div align="center">
+  <img src="assets/architecture.jpg" alt="SentinelFlow Architecture Diagram" width="600"/>
+</div>
 
 ---
 
