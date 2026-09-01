@@ -13,17 +13,15 @@ SentinelFlow is a risk management system. It detects anomalous transaction veloc
 
 ## 🏗️ Architecture
 
-<div align="center">
-
 ```mermaid
 flowchart TD
     A["Transaction Input"]
-    B["Feature Engineering\nfeatures/engineering.py\n- Velocity counts: 1h and 24h\n- Amount z-score vs user history\n- Geo distance from last transaction\n- New device flag\n- Payment method and merchant category encoding"]
-    C["XGBoost Classifier\nmodels/model.json\n- Trained on synthetic UPI and card data\n- scale_pos_weight to handle class imbalance\n- Outputs fraud probability 0 to 1"]
-    D["SHAP Explainability\nfeatures/explainability.py\n- Top-3 feature contributions\n- Translated into plain English sentences"]
-    E["Two-Threshold Decision Gate\napi/main.py\n- Score below 0.35 → approve\n- Score 0.35 to 0.70 → flag for review\n- Score 0.70 or above → block"]
-    F["SQLite Audit Log\ndata/audit_log.db\n- Score, decision, explanation, model version recorded"]
-    G["FastAPI Response and Streamlit Dashboard"]
+    B["Feature Engineering — features/engineering.py<br/>- Velocity: 1h and 24h counts<br/>- Amount z-score vs user history<br/>- Geo distance from last transaction<br/>- New device flag<br/>- Payment method and merchant category encoding"]
+    C["XGBoost Classifier — models/model.json<br/>- Trained on synthetic UPI and card data<br/>- scale_pos_weight to handle class imbalance<br/>- Outputs fraud probability 0 to 1"]
+    D["SHAP Explainability — features/explainability.py<br/>- Top-3 feature contributions<br/>- Translated into plain English sentences"]
+    E["Two-Threshold Decision Gate — api/main.py<br/>- Score below 0.35: approve<br/>- Score 0.35 to 0.70: flag for review<br/>- Score 0.70 or above: block"]
+    F["SQLite Audit Log — data/audit_log.db<br/>- Score, decision, explanation, model version recorded"]
+    G["FastAPI Response + Streamlit Dashboard"]
 
     A --> B
     B --> C
@@ -32,8 +30,6 @@ flowchart TD
     E --> F
     F --> G
 ```
-
-</div>
 
 ---
 
